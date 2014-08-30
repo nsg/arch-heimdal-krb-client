@@ -5,3 +5,11 @@ This package installs the client tools like kinit, ktutil and kadmin but not the
 The binaries are installed in `/usr/` and conflicts with the `krb5` package that you most likely already have installed. I provide a package called `lib64-krb5` that only contains the libraries from MIT kerberos.
 
 To use this, first install `lib64-krb5`, answer yes to the conflicting package `krb5` to remove it.
+
+# How to build
+
+Execute `makepkg` as a normal user, the package will be build and called `heimdal-krb-client-version-x86_64.pkg.tar.xz`
+
+# How to install
+
+Make sure `lib64-krb5` is installed and execute `pacman -U heimdal-krb-client-version-x86_64.pkg.tar.xz`
