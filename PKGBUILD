@@ -48,10 +48,6 @@ package() {
   cd heimdal-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-
-#  install -Dm644 "${srcdir}"/krb5-${pkgver}/NOTICE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-#  install -dm 755 "${pkgdir}"/usr/share/aclocal
-#  install -m 644 util/ac_check_krb5.m4 "${pkgdir}"/usr/share/aclocal
   if [ -z $pkgdir ]; then
     error "pkgdir is empty, abort!"
     exit 1
