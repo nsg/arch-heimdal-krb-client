@@ -2,7 +2,7 @@
 
 pkgname=heimdal-krb-client
 pkgver=1.6rc2
-pkgrel=2
+pkgrel=3
 pkgdesc="The Heimdal Kerberos network authentication system client tools"
 arch=('x86_64')
 url="http://www.h5l.org/"
@@ -55,18 +55,14 @@ package() {
 
   # Prefere to keep the normal su, ftp, ... in PATH
   msg "Rename binaries"
-  for p in su ftp login telnet rcp rsh; do
+  for p in su ftp login telnet rcp rsh pagsh; do
     mv -v "${pkgdir}"/usr/bin/{,k}$p
   done
 
   msg "Update man pages"
-  for p in "${pkgdir}"/usr/share/man/*/{su,ftp,login,telnet,ftpusers,rcp,rsh}.*; do
+  for p in "${pkgdir}"/usr/share/man/*/{su,ftp,login,telnet,ftpusers,rcp,rsh,pagsh}.*; do
     ( cd $(dirname $p) && mv -v {,k}$(basename $p) )
   done
-
-  # Just because I'm so used to type kpagsh
-  msg "Create symlink for kpagsh"
-  ( cd "${pkgdir}"/usr/bin/ && ln -sv pagsh kpagsh )
 
   msg "Remove server only binaries"
   rm -rfv "${pkgdir}"/usr/libexec/
